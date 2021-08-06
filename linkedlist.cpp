@@ -59,7 +59,6 @@ void insert_at_position(int v,int data){
     node* temp2=temp->next;
     temp->next=New_node;
     New_node->next=temp2;
-    
 }
 void delete_at_position(int v){
     if(head==NULL){
@@ -76,6 +75,27 @@ void delete_at_position(int v){
     temp=temp->next;
     temp2->next=temp;
     return;
+}
+void reversel(){
+    if(head==NULL){
+        cout<<"empty linked list!";
+        return;
+    }
+    else if(head->next==NULL)
+        return;
+    node* temp1=head;
+    node* temp2=temp1->next;
+    node* temp3=temp2->next;
+
+    temp1->next=NULL;
+    temp2->next=temp1;
+    while(temp3 != NULL){
+        temp1=temp2;
+        temp2=temp3;
+        temp3=temp3->next;
+        temp2->next=temp1;
+    }
+    head=temp2;
 }
 void display(){
     node* temp=head;
@@ -99,7 +119,18 @@ int main()
         cin>>data;
         p.insert_at_head(data);
     }
-    p.insert_at_position(4,15);
-    p.delete_at_position(4);
+    p.insert_at_position(4,105);
+    p.display();
+    cout<<endl;
+    p.delete_at_position(3);
+    p.display();
+    cout<<endl;
+    p.insert_at_position(4,108);
+    p.display();
+    cout<<endl;
+    p.reversel();
+    p.display();
+    cout<<endl;
+    p.reversel();
     p.display();
 }
